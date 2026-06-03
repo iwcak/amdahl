@@ -8,9 +8,15 @@ The program processes a data file in three phases:
 - **Merge** — sorted chunks are merged back into one file sequentially
 ## How to run:
 git clone https://github.com/iwcak/amdahl
+
 pip install -r requirements.txt 
+
 (pip install pandas matplotlib)
+
 python gen_data.py
+
 python benchmark.py
+
 python plot_results.py
+
 python amdahl.py
