@@ -4,12 +4,10 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("results/results.csv")
 P_VALUES = [1, 2, 3, 4, 5, 6, 7, 8]
 
-# calculate speedup: T1 / Tp for each file size
 for size in ["small", "medium", "large"]:
     t1 = df[(df["file_size"] == size) & (df["P"] == 1)]["t_total"].values[0]
     df.loc[df["file_size"] == size, "speedup"] = t1 / df[df["file_size"] == size]["t_total"]
 
-# ── Plot 1: Speedup chart ──
 fig, ax = plt.subplots(figsize=(9, 6))
 
 ax.plot(P_VALUES, P_VALUES, "k--", linewidth=1.5, label="Ideal (linear)")
@@ -29,7 +27,6 @@ plt.tight_layout()
 plt.savefig("results/speedup_chart.png", dpi=150)
 print("Saved speedup_chart.png")
 
-# ── Plot 2: Time breakdown stacked bar ──
 fig, axes = plt.subplots(1, 3, figsize=(14, 5), sharey=False)
 
 for ax, size in zip(axes, ["small", "medium", "large"]):
